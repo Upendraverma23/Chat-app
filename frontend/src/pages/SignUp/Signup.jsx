@@ -7,6 +7,7 @@ const Signup = () => {
 
 const [input,setinput] = useState({
   fullName : "",
+
   username : "",
 
   password : "",
@@ -19,13 +20,13 @@ const [input,setinput] = useState({
 const { loading,signup } = useSignup();
 
 const HandleCheckboxChange = (gender) => {
-  setinput({...input,gender})
-}
+  setinput({...input,gender});
+};
 
 
 const handleSubmit = async (e) => {
   e.preventDefault();
- await signup(input)
+ await signup(input);
 };
 
 
@@ -36,7 +37,8 @@ const handleSubmit = async (e) => {
       <div className='w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
        <h1 className='text-3x1 font-semibold text-center text-gray-300'> 
        SignUp 
-       <span className='text-green-300'>ChatApp</span></h1>
+       <span className='text-green-300'>ChatApp</span> 
+       </h1>
 
        <form onSubmit={handleSubmit}>
         <div>
@@ -99,7 +101,9 @@ const handleSubmit = async (e) => {
 
         <div> Already have an account? <Link to="/Login" className='text-sm hover:underline hover:text-green-300 mt-2 inline-block'><p className=''>Login</p></Link></div>
         <div>
-          <button className='btn btn-block btn-sm mt-2'>SignUp</button>
+          <button className='btn btn-block btn-sm mt-2 border border-slate-700' disabled={loading}>
+            { loading ? <span className='loading loading-spinner'></span> : "Sign Up" }
+            </button>
         </div>
         </form>
 
